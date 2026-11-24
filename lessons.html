@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}درس‌ها{% endblock %}
+{% block content %}
+<section>
+  <h2>درس‌ها</h2>
+  <p class="sub">یک موضوع را انتخاب کن و همین حالا شروع کن.</p>
+  <div class="filters" id="filters">
+    <button class="on" data-c="all">همه</button>
+    {% for c in categories %}<button data-c="{{ c }}">{{ c }}</button>{% endfor %}
+  </div>
+  <div class="grid" id="lessons-grid"></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/lessons.js') }}"></script>{% endblock %}

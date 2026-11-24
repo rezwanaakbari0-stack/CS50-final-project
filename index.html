@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}خانه | StudyHub{% endblock %}
+
+{% block content %}
+
+<!-- بخش اصلی صفحه Home -->
+<section class="hero">
+
+    <!-- آواتار -->
+  <img src="{{ url_for('static', filename='img/avatar.png') }}"
+     alt="آواتار مدیر StudyHub" width="120" height="120" class="avatar">
+
+    <!-- متن معرفی -->
+    <div class="hero-text">
+
+        <h1 id="typing"></h1>
+
+        <p>
+            به StudyHub خوش آمدید!
+            اینجا می‌توانید درس‌های کوتاه و کاربردی پیدا کنید؛
+            از سلامت و کمک‌های اولیه تا کدنویسی و زبان.
+        </p>
+
+        <div class="hero-btns">
+
+            <a class="btn" href="{{ url_for('lessons') }}">
+                شروع یادگیری
+            </a>
+
+            <a class="btn alt" href="{{ url_for('courses') }}">
+                دیدن دوره‌ها
+            </a>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- درس‌های پیشنهادی -->
+<section class="recommended">
+
+    <h2>درس‌های پیشنهادی</h2>
+
+    <p class="section-description">
+        یادگیری را از همین امروز شروع کنید.
+    </p>
+
+    <div class="grid">
+
+        {% for l in lessons %}
+
+        <div class="card">
+
+            <div class="ic">{{ l.icon }}</div>
+
+            <h3>{{ l.title }}</h3>
+
+            <p>{{ l.text }}</p>
+
+            <span class="tag">
+                {{ l.category }}
+            </span>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="more-lessons">
+        <a class="btn" href="{{ url_for('lessons') }}">
+            مشاهده همه درس‌ها
+        </a>
+    </div>
+
+</section>
+
+
+<!-- انیمیشن تایپ متن -->
+<script>
+
+(function () {
+
+    const el = document.getElementById("typing");
+
+    if (!el) return;
+
+    const before = "یادگیری را ";
+    const highlight = "ساده و لذت‌بخش";
+    const after = " کن";
+
+    const full = before + highlight + after;
+
+    let n = 0;
+    let deleting = false;
+
+    function render() {
+
+        const text = full.slice(0, n);
+
+        const a = text.slice(0, before.length);
+
+        const b = text.slice(
+            before.length,
+            before.length + highlight.length
+        );
+
+        const c = text.slice(
+            before.length + highlight.length
+        );
+
+        el.innerHTML =
+            a +
+            '<span class="hl">' + b + '</span>' +
+            c +
+            '<span class="cursor">|</span>';
+
+    }
+
+    function tick() {
+
+        let delay;
+
+        if (!deleting) {
+
+            n++;
+            delay = 110;
+
+            if (n >= full.length) {
+                deleting = true;
+                delay = 1800;
+            }
+
+        } else {
+
+            n--;
+            delay = 55;
+
+            if (n <= 0) {
+                deleting = false;
+                delay = 600;
+            }
+
+        }
+
+        render();
+
+        setTimeout(tick, delay);
+
+    }
+
+    render();
+
+    setTimeout(tick, 500);
+
+})();
+
+</script>
+
+{% endblock %}

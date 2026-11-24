@@ -1,0 +1,64 @@
+:root{--bg:#f7f8fc;--card:#fff;--text:#1d2340;--muted:#5d6486;--brand:#4f46e5;--brand2:#06b6d4;--line:#e3e6f2;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1226;--card:#191d3a;--text:#eef0ff;--muted:#a3a9cf;--brand:#818cf8;--brand2:#22d3ee;--line:#2a2f57}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;line-height:1.8}
+header{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--line);z-index:9}
+nav{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;flex-wrap:wrap;gap:8px}
+.logo{font-weight:800;font-size:1.3rem;color:var(--brand);text-decoration:none}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--text);text-decoration:none;font-weight:600}
+nav a:hover,nav a.active{color:var(--brand)}
+section{max-width:1000px;margin:auto;padding:56px 20px}
+h2{font-size:1.7rem;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 28px}
+
+/* ---------- Hero (آواتار + متن تایپ‌شونده) ---------- */
+.hero{display:flex;align-items:center;justify-content:center;gap:48px;direction:rtl;padding-top:72px;text-align:right}
+.hero-text{flex:1;max-width:560px}
+.hero h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 12px;line-height:1.5;min-height:3em}
+.hero h1 .hl{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);margin:0 0 28px;font-size:1.1rem;min-height:4em}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero-btns .btn.alt{margin-inline-start:0}
+
+.hero-avatar img{display:block;width:320px;max-width:100%;height:auto;background:none;border:0;border-radius:0;box-shadow:none;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.cursor{color:var(--brand2);font-weight:400;-webkit-text-fill-color:var(--brand2);animation:blink .8s infinite}
+@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+/* ---------- دکمه‌ها ---------- */
+.btn{display:inline-block;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#fff;border:0;padding:12px 28px;border-radius:12px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--brand);border:2px solid var(--brand);margin-inline-start:10px}
+
+/* ---------- کارت‌ها ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card .ic{font-size:2rem}
+.card h3{margin:8px 0 4px;font-size:1.1rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.tag{display:inline-block;font-size:.8rem;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:0 10px;color:var(--brand);margin-top:10px}
+
+/* ---------- فیلترها و دوره‌ها ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:4px 16px;font:inherit;cursor:pointer}
+.filters button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.course ul{padding-inline-start:18px;margin:10px 0;color:var(--muted);font-size:.93rem}
+.course .btn{width:100%;text-align:center;padding:8px}
+
+/* ---------- فرم تماس ---------- */
+form{max-width:520px;display:grid;gap:12px}
+input,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);font:inherit}
+input:focus,textarea:focus{outline:2px solid var(--brand)}
+#status.ok{color:var(--brand);font-weight:600}
+#status.err{color:#dc2626;font-weight:600}
+
+footer{text-align:center;color:var(--muted);padding:28px 20px;border-top:1px solid var(--line)}
+
+/* ---------- موبایل ---------- */
+@media (max-width:768px){
+  .hero{flex-direction:column;text-align:center}
+  .hero-text{text-align:center}
+  .hero-btns{justify-content:center}
+  .hero-avatar img{width:250px}
+}

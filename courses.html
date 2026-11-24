@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}دوره‌ها{% endblock %}
+{% block content %}
+<section>
+  <h2>معرفی دوره‌ها</h2>
+  <p class="sub">مسیرهای یادگیری مرحله‌به‌مرحله با هدف روشن.</p>
+  <div class="grid">
+    {% for c in courses %}
+    <div class="card course">
+      <div class="ic">{{ c.icon }}</div><h3>{{ c.title }}</h3><p>{{ c.text }}</p>
+      <ul><li>{{ c.sessions }} جلسه</li><li>سطح: {{ c.level }}</li><li>{{ c.perks }}</li></ul>
+      <a class="btn" href="{{ url_for('contact') }}">ثبت‌نام</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
